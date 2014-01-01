@@ -1,13 +1,12 @@
 #!/bin/bash
 
+cd $(dirname $0)
+
+export PATH=/usr/sbin:$PATH
+
+ALIASES=/opt/ffmap-backend/aliases_fastd.json
+
 set -e
+DEST=/var/www/nodes_ffhh/
 
-DEST=$1
-
-
-[ "$DEST" ] || exit 1
-
-"$(dirname "$0")"/ffhlwiki.py http://freifunk.metameute.de/wiki/Knoten > "$(dirname "$0")"/aliases_hl.json
-"$(dirname "$0")"/ffhlwiki.py http://freifunk.metameute.de/wiki/Moelln:Knoten > "$(dirname "$0")"/aliases_moelln.json
-
-"$(dirname "$0")"/bat2nodes.py -a "$(dirname "$0")"/aliases.json -a aliases_hl.json -a aliases_moelln.json -d $DEST $GWS
+"$(dirname "$0")"/bat2nodes.py -a $ALIASES -o -d $DEST 
