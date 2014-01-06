@@ -74,7 +74,6 @@ scriptdir = os.path.dirname(os.path.realpath(__file__))
 #rrd.update_images()
 
 m = D3MapBuilder(db)
-print(m.build())
 
 #Write nodes json
 nodes_json = open(options['destination_directory'] + '/nodes.json.new','w')

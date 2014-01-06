@@ -1,2 +1,5 @@
 *.pyc
 aliases.json
+nodedb/
+nodes/
+aliases_fastd.json
