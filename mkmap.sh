@@ -8,7 +8,9 @@ PEERS=/etc/fastd/ffhh-mesh-vpn/peers
 ALIASES=/opt/ffmap-backend/aliases_fastd.json
 DEST=/var/www/nodes_ffhh/
 
+cd "$(dirname "$0")"/
 set -e
 
-"$(dirname "$0")"/mkaliases.py -p $PEERS -d $ALIASES
-"$(dirname "$0")"/bat2nodes.py -a $ALIASES -o -d $DEST 
+./mkaliases.py -p $PEERS -d $ALIASES
+./bat2nodes.py -A -a $ALIASES -o -d $DEST 
+

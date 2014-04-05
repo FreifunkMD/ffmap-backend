@@ -185,6 +185,9 @@ class NodeDB:
       if 'gps' in alias:
         node.gps = alias['gps']
 
+      if 'firmware' in alias:
+        node.firmware = alias['firmware']
+
   # list of macs
   # if options['gateway']:
   #   mark_gateways(options['gateway'])
@@ -319,6 +322,9 @@ def is_derived_mac(a, b):
     mac_a = list(int(i, 16) for i in a.split(":"))
     mac_b = list(int(i, 16) for i in b.split(":"))
   except ValueError:
+    return False
+
+  if mac_a[4] != mac_b[4] or mac_a[2] != mac_b[2] or mac_a[1] != mac_b[1]:
     return False
 
   x = list(mac_a)
