@@ -188,6 +188,9 @@ class NodeDB:
       if 'firmware' in alias:
         node.firmware = alias['firmware']
 
+      if 'model' in alias:
+        node.model = alias['model']
+
   # list of macs
   # if options['gateway']:
   #   mark_gateways(options['gateway'])

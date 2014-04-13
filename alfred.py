@@ -23,6 +23,11 @@ class alfred:
       except KeyError:
         pass
 
+      try:
+        node_alias['model'] = node['hardware']['model']
+      except KeyError:
+        pass
+
       if 'hostname' in node:
         node_alias['name'] = node['hostname']
       elif 'name' in node:

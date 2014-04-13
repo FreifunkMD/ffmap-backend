@@ -16,6 +16,7 @@ class D3MapBuilder:
                         'macs': ', '.join(x.macs),
                         'geo': [float(x) for x in x.gps.split(" ")] if x.gps else None,
                         'firmware': x.firmware,
+                        'model': x.model,
                         'flags': x.flags
                        } for x in nodes]
 

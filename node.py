@@ -11,6 +11,7 @@ class Node():
     })
     self.gps = None
     self.firmware = None
+    self.model = None
 
   def add_mac(self, mac):
     mac = mac.lower()
