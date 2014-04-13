@@ -64,6 +64,8 @@ if options['alfred']:
   af = alfred()
   db.add_node_info(af.aliases())
 
+db.count_clients()
+
 if options['obscure']:
   db.obscure_clients()
 
