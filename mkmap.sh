@@ -2,15 +2,13 @@
 
 cd $(dirname $0)
 
-export PATH=/usr/sbin:$PATH
+export PATH=/usr/sbin:/usr/local/sbin:$PATH
 
 PEERS=/etc/fastd/ffhh-mesh-vpn/peers
 ALIASES=/opt/ffmap-backend/aliases_fastd.json
 DEST=/var/www/nodes_ffhh/
 
-cd "$(dirname "$0")"/
 set -e
 
-./mkaliases.py -p $PEERS -d $ALIASES
-./bat2nodes.py -A -a $ALIASES -o -d $DEST 
-
+"$(dirname "$0")"/mkaliases.py -p $PEERS -d $ALIASES
+"$(dirname "$0")"/bat2nodes.py -A -a $ALIASES -o -d $DEST
