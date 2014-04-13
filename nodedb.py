@@ -166,6 +166,22 @@ class NodeDB:
 
     return links
 
+  def add_node_info(self, aliases):
+    for mac, alias in aliases.items():
+      try:
+        node = self.maybe_node_by_fuzzy_mac(mac)
+      except:
+        continue
+
+      if not node.name and 'name' in alias:
+        node.name = alias['name']
+
+      if 'firmware' in alias:
+        node.firmware = alias['firmware']
+
+      if 'model' in alias:
+        node.model = alias['model']
+
   def import_aliases(self, aliases):
     for mac, alias in aliases.items():
       try:

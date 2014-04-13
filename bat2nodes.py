@@ -62,7 +62,7 @@ if options['aliases']:
 
 if options['alfred']:
   af = alfred()
-  db.import_aliases(af.aliases())
+  db.add_node_info(af.aliases())
 
 if options['obscure']:
   db.obscure_clients()
