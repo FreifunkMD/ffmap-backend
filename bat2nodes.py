@@ -81,6 +81,6 @@ nodes_json.close()
 #Move to destination
 os.rename(options['destination_directory'] + '/nodes.json.new',options['destination_directory'] + '/nodes.json')
 
-#rrd = rrd(scriptdir +  "/nodedb/", options['destination_directory'] + "/nodes")
-#rrd.update_database(db)
-#rrd.update_images()
+rrd = rrd(scriptdir +  "/nodedb/", options['destination_directory'] + "/nodes")
+rrd.update_database(db)
+rrd.update_images()
