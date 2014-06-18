@@ -174,7 +174,7 @@ class NodeDB:
         continue
 
       if not node.name and 'name' in alias:
-        node.name = alias['name']
+        node.name = alias['name'] + ' [a]'
 
       if 'firmware' in alias:
         node.firmware = alias['firmware']
@@ -199,8 +199,10 @@ class NodeDB:
         node.name = alias['name']
 
       if 'vpn' in alias and alias['vpn']:
-        node.interfaces[mac].vpn = True
-
+        try:
+          node.interfaces[mac].vpn = True
+        except:
+          print("error with ", mac)
       if 'gps' in alias:
         node.gps = alias['gps']
 
