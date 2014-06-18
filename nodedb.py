@@ -188,21 +188,25 @@ class NodeDB:
   def import_aliases(self, aliases):
     for mac, alias in aliases.items():
       try:
-        node = self.maybe_node_by_fuzzy_mac(mac)
+        node = self.maybe_node_by_mac([mac])
       except:
-        # create an offline node
-        node = Node()
-        node.add_mac(mac)
-        self._nodes.append(node)
+        try:
+          node = self.maybe_node_by_fuzzy_mac(mac)
+        except:
+          # create an offline node
+          node = Node()
+          node.add_mac(mac)
+          self._nodes.append(node)
 
       if 'name' in alias:
         node.name = alias['name']
 
-      if 'vpn' in alias and alias['vpn']:
+      if 'vpn' in alias and alias['vpn'] and mac and node.interfaces and mac in node.interfaces:
         try:
           node.interfaces[mac].vpn = True
         except:
           print("error with ", mac)
+
       if 'gps' in alias:
         node.gps = alias['gps']
 
@@ -214,6 +218,9 @@ class NodeDB:
 
       if 'uptime' in alias:
         node.uptime = alias['uptime']
+      
+      if 'id' in alias:
+        node.id = alias['id']
 
   # list of macs
   # if options['gateway']:
@@ -223,6 +230,7 @@ class NodeDB:
       try:
         node = self.maybe_node_by_mac((gateway, ))
       except:
+        print("WARNING: did not find gateway '",gateway,"' in node list")
         continue
 
       node.flags['gateway'] = True
