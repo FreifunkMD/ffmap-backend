@@ -17,6 +17,7 @@ class D3MapBuilder:
                         'geo': [float(x) for x in x.gps.split(" ")] if x.gps else None,
                         'firmware': x.firmware,
                         'model': x.model,
+                        'uptime': x.uptime,
                         'flags': x.flags,
                         'clientcount': x.clientcount
                        } for x in nodes]

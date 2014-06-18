@@ -181,6 +181,9 @@ class NodeDB:
 
       if 'model' in alias:
         node.model = alias['model']
+      
+      if 'uptime' in alias:
+        node.uptime = alias['uptime']
 
   def import_aliases(self, aliases):
     for mac, alias in aliases.items():
@@ -206,6 +209,9 @@ class NodeDB:
 
       if 'model' in alias:
         node.model = alias['model']
+
+      if 'uptime' in alias:
+        node.uptime = alias['uptime']
 
   # list of macs
   # if options['gateway']:
