@@ -34,7 +34,7 @@ for fn in os.listdir(options['peers_source']):
       for pl in peerlines:
         pls = pl.split() 
 
-        if len(pls) > 0:
+        if len(pls) > 1:
           if pls[1] == "Knotenname:":
             peer['name'] = pls[2]
           elif pls[1] == "Koordinaten:":

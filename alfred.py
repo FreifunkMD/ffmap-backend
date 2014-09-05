@@ -28,6 +28,16 @@ class alfred:
       except KeyError:
         pass
 
+      try:
+        node_alias['uptime'] = node['statistics']['uptime']
+      except KeyError:
+        pass
+
+      try:
+        node_alias['id'] = node['network']['mac']
+      except KeyError:
+        pass
+
       if 'hostname' in node:
         node_alias['name'] = node['hostname']
       elif 'name' in node:

@@ -12,6 +12,7 @@ class Node():
     self.gps = None
     self.firmware = None
     self.model = None
+    self.uptime = None
     self.clientcount = 0
 
   def add_mac(self, mac):
